@@ -4,7 +4,7 @@ var db = require('../database.js')
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    var sql = "select * from results ORDER BY timestamp desc LIMIT 5"
+    var sql = "select * from result ORDER BY timestamp desc LIMIT 5"
     var params = []
     db.all(sql, params, (err, rows) => {
         if (err) {

@@ -11,6 +11,7 @@ var resultsRouter = require('./routes/results');
 var db = require('./database.js')
 const bodyParser = require("body-parser");
 const { syncBuiltinESMExports } = require('module');
+var request = require('request');
 
 var app = express();
 
@@ -46,5 +47,46 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function lotteryCycle() {
+  while (true) {
+    await sleep(30000);
+
+    console.log('pickinig winner..');
+    pickWinners();
+  }
+}
+
+async function pickWinners() {
+  console.log('0')
+  request('https://celtra-lottery.herokuapp.com/api/getLotteryNumber', function (err, res) {
+    let json = JSON.parse(res.body);
+
+    console.log('1')
+    let select = "select * from entry WHERE timestamp > datetime(?, '-30 seconds') AND number = ?"
+    var insert = "INSERT INTO result (timestamp, number, winners) VALUES (?,?,?)"
+    let params = [json.createdAt, json.lotteryNumber];
+
+    db.all(select, params, (err, rows) => {
+      console.log('2' + json.createdAt + " " + json.lotteryNumber);
+      console.log('2' + rows.map(f => f.name).join(', '));
+
+      db.run(insert, [json.createdAt, json.lotteryNumber, rows.length == 0 ? 'No lucky winner' : rows.map(f => f.name).join(', ')], function (err) {
+        if (err) {
+          console.log('Error inserting lottery results');
+          return;
+        }
+        console.log(`Winning number ${json.lotteryNumber} picked`);
+      });
+    });
+    console.log('3')
+  });
+}
+
+lotteryCycle();
 
 module.exports = app;

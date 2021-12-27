@@ -25,7 +25,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 }
             });
 
-        db.run(`CREATE TABLE results (
+        db.run(`CREATE TABLE result (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
             number integer,
@@ -36,7 +36,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     // Table already created
                 } else {
                     // Table just created, creating some rows
-                    var insert = 'INSERT INTO results (timestamp, number) VALUES (?,?)'
+                    var insert = 'INSERT INTO result (timestamp, number, winners) VALUES (?,?,?)'
+                    db.run(insert, [Date.now(), 0, ""])
                 }
             });
 

@@ -10,9 +10,9 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div>New winner in x s..</div>
+			<div id="countdown">New winner in x s..</div>
 			<div>
-				<ul>
+				<ul id="results">
 					<% results.forEach(function(result) { %>
 					<li>
 						<span><%= result.winners %></span><%= result.number %><span></span>
