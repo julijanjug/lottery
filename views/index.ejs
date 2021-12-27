@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script>
+			const submitUrl = "<%= submitUrl %>";
+			const resultsUrl = "<%= resultsUrl %>";
+		</script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div>New winner in x s..</div>
+			<div>
+				<ul>
+					<% results.forEach(function(result) { %>
+					<li>
+						<span><%= result.winners %></span><%= result.number %><span></span>
+					</li>
+					<% }); %>
+				</ul>
+			</div>
+			<form id="entry" action="#">
+				<input id="name" type="text" required />
+				<input id="number" type="number" min="1" max="30" required />
+				<button onclick="submitEntry()">Submit</button>
+			</form>
+		</div>
+		<script src="/javascripts/index.js"></script>
+	</body>
+</html>
