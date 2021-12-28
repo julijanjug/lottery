@@ -42,6 +42,8 @@ const results = async () => {
         var li = document.createElement('li');
         var winners = document.createElement('span');
         var number = document.createElement('span');
+        winners.classList.add("winners");
+        number.classList.add("number");
 
         winners.appendChild(document.createTextNode(f.winners))
         number.appendChild(document.createTextNode(f.number));

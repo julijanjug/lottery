@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
 :root {
   --bg: #eff2fa;
   --app-bg: #ffffff;
@@ -9,11 +9,13 @@
   --play-bg: #fef0f5;
   --play-outline: #d64262;
 }
+
 * {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
+
 body {
   user-select: none;
   height: 100vh;
@@ -25,16 +27,77 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
-
 .wrapper {
-  display: flex;
+  overflow: hidden;
   justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
-  height: 300px;
-  width: 250px;
+  min-height: 200px;
+  width: auto;
   border-radius: 15px;
   background: var(--app-bg);
-  box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+  padding: 8px
+}
+
+.header {
+  width: auto;
+  text-align: center;
+  padding: 12px 8px 12px 8px;
+}
+
+.list {
+  float: left;
+  min-width: 150px;
+  min-height: 110px;
+  margin: 0 8px 0 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-bottom: 2px;
+}
+
+span.winners {
+  float: left;
+  width: 150px;
+  overflow-x: scroll;
+  text-align: left;
+}
+
+span.number {
+  float: right;
+  width: 30px;
+  text-align: right;
+  padding-left: 6px;
+}
+
+.wrapper div {
+  padding: 8px;
+}
+
+.form {
+  overflow: hidden;
+  margin: 10px;
+}
+
+.form.inputs {
+  width: auto;
+}
+
+.form button {
+  margin: auto;
+  display: block;
+}
+
+@media screen and (max-width: 400px) {
+  .list {
+    float: none;
+    margin-right: 0;
+    width: auto;
+    border: 0;
+  }
 }

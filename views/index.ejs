@@ -10,21 +10,26 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div id="countdown">New winner in x s..</div>
-			<div>
+			<div class="header" id="countdown">New winner in x s..</div>
+			<div class="list">
 				<ul id="results">
 					<% results.forEach(function(result) { %>
 					<li>
-						<span><%= result.winners %></span><%= result.number %><span></span>
+						<span class="winners"><%= result.winners %></span>
+						<span class="number"><%= result.number %></span>
 					</li>
 					<% }); %>
 				</ul>
 			</div>
-			<form id="entry" action="#">
-				<input id="name" type="text" required />
-				<input id="number" type="number" min="1" max="30" required />
-				<button onclick="submitEntry()">Submit</button>
-			</form>
+			<div class="form">
+				<form id="entry" action="#">
+					<div class="inputs">
+						<input id="name" type="text" required />
+						<input id="number" type="number" min="1" max="30" required />
+					</div>
+					<button onclick="submitEntry()">Submit</button>
+				</form>
+			</div>
 		</div>
 		<script src="/javascripts/index.js"></script>
 	</body>
