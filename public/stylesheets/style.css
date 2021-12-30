@@ -3,7 +3,7 @@
 :root {
   --bg: #eff2fa;
   --app-bg: #ffffff;
-  --h: #333539;
+  --h: #3958ca;
   --p: #dddfe5;
   --icon: #333539;
   --play-bg: #fef0f5;
@@ -14,6 +14,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
 }
 
 body {
@@ -44,48 +45,63 @@ body {
   width: auto;
   text-align: center;
   padding: 12px 8px 12px 8px;
+  font-size: 22px;
 }
 
 .list {
   float: left;
   min-width: 150px;
   min-height: 110px;
-  margin: 0 8px 0 0;
+  margin: 0 8px 0 4px;
+}
+
+.wrapper div {
+  padding: 6px;
 }
 
 ul {
   list-style-type: none;
+  padding-top: 16px;
+  max-height: 150px;
+  overflow: hidden;
+  overflow-y: scroll
 }
 
 li {
-  padding-bottom: 2px;
+  line-height: 1.5;
+  font-size: 18px;
 }
 
-span.winners {
+.number {
+  color: #3958ca;
+}
+
+div.winners {
   float: left;
   width: 150px;
-  overflow-x: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   text-align: left;
+  padding: 0;
+  white-space: nowrap;
 }
 
-span.number {
+div.number {
   float: right;
   width: 30px;
   text-align: right;
-  padding-left: 6px;
+  padding: 0 0 0 6px;
 }
 
-.wrapper div {
-  padding: 8px;
-}
 
 .form {
   overflow: hidden;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .form.inputs {
   width: auto;
+  padding-bottom: 0px;
 }
 
 .form button {
@@ -99,5 +115,84 @@ span.number {
     margin-right: 0;
     width: auto;
     border: 0;
+  }
+
+  .form {
+    display: inline-block;
+  }
+}
+
+.float-label-field {
+  border: none;
+  outline: none;
+  position: relative;
+  margin: 0 0 20px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.float-label-field input {
+  border: none;
+  outline: none;
+  padding: 5px 5px 8px 0px;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: solid 1px #efefef;
+}
+
+.float-label-field label {
+  opacity: 0.5;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.float-label-field.focus label {
+  color: #3958ca;
+}
+
+.float-label-field.focus input {
+  border-bottom: solid 1px #3958ca;
+}
+
+.float-label-field.float label {
+  opacity: 1;
+  top: -8px;
+  font-size: 60%;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.button-36 {
+  background-image: linear-gradient(92.88deg, #3958ca 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  padding-bottom: 12px;
+  border-radius: 22px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 20px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
   }
 }

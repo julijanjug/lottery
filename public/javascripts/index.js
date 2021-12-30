@@ -40,8 +40,8 @@ const results = async () => {
 
     items.forEach(f => {
         var li = document.createElement('li');
-        var winners = document.createElement('span');
-        var number = document.createElement('span');
+        var winners = document.createElement('div');
+        var number = document.createElement('div');
         winners.classList.add("winners");
         number.classList.add("number");
 
@@ -61,18 +61,8 @@ async function setCountdown() {
         var now = new Date();
         var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
 
-        // Find the distance between now and the count down date
         var distance = deadline - utc;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-        // var now = new Date().getSeconds();
-        // var distance = deadline - now < 0 ? 30 + deadline - now : deadline - now;
 
         document.querySelector("#countdown").innerHTML = "New winner in " + seconds + "s... ";
 
@@ -85,3 +75,23 @@ async function setCountdown() {
 }
 
 results();
+
+
+let nameInput = document.querySelector('#name');
+let numberInput = document.querySelector('#number');
+
+nameInput.onblur = inputBlur;
+nameInput.onfocus = inputFocus;
+numberInput.onblur = inputBlur;
+numberInput.onfocus = inputFocus;
+
+function inputFocus(e) {
+    this.closest('.float-label-field').classList.add('float', 'focus');
+};
+
+function inputBlur() {
+    this.closest('.float-label-field').classList.remove('focus');
+    if (!this.value) {
+        this.closest('.float-label-field').classList.remove('float');
+    }
+};

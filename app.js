@@ -52,29 +52,25 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function lotteryCycle() {
-  while (true) {
-    await sleep(30000);
-
-    console.log('pickinig winner..');
-    pickWinners();
-  }
-}
-
 async function pickWinners() {
-  console.log('0')
   request('https://celtra-lottery.herokuapp.com/api/getLotteryNumber', function (err, res) {
     let json = JSON.parse(res.body);
 
-    console.log('1')
+    var now = new Date();
+    var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+    var eta_ms = new Date(json.createdAt).getTime() + 31000 - utc.getTime();
+
+    console.log(new Date(json.createdAt))
+    console.log(utc)
+    console.log(eta_ms)
+
+    var timeout = setTimeout(pickWinners, eta_ms);
+
     let select = "select * from entry WHERE timestamp > datetime(?, '-30 seconds') AND number = ?"
     var insert = "INSERT INTO result (timestamp, number, winners) VALUES (?,?,?)"
     let params = [json.createdAt, json.lotteryNumber];
 
     db.all(select, params, (err, rows) => {
-      console.log('2' + json.createdAt + " " + json.lotteryNumber);
-      console.log('2' + rows.map(f => f.name).join(', '));
-
       db.run(insert, [json.createdAt, json.lotteryNumber, rows.length == 0 ? 'No lucky winner' : rows.map(f => f.name).join(', ')], function (err) {
         if (err) {
           console.log('Error inserting lottery results');
@@ -83,10 +79,10 @@ async function pickWinners() {
         console.log(`Winning number ${json.lotteryNumber} picked`);
       });
     });
-    console.log('3')
   });
 }
 
-lotteryCycle();
+console.log('Picking winners');
+pickWinners();
 
 module.exports = app;
