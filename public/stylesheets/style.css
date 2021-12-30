@@ -61,7 +61,7 @@ body {
 
 ul {
   list-style-type: none;
-  padding-top: 16px;
+  padding-top: 2px;
   max-height: 150px;
   overflow: hidden;
   overflow-y: scroll
@@ -118,6 +118,7 @@ div.number {
   }
 
   .form {
+    margin-top: 4px;
     display: inline-block;
   }
 }
