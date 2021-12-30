@@ -8,3 +8,5 @@ npm install
 npm start
 ```
 And navigate to: http://localhost:3000/
+
+![image](https://user-images.githubusercontent.com/25587919/147781327-70801cb4-61c1-4bf2-9df4-591ab255a5d7.png)
