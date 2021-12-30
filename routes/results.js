@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../database.js')
 
-/* GET users listing. */
+/* GET results */
 router.get('/', function (req, res, next) {
     var sql = "select * from result GROUP BY timestamp ORDER BY timestamp desc LIMIT 5"
     var params = []
@@ -16,8 +16,6 @@ router.get('/', function (req, res, next) {
             "data": rows
         })
     });
-
-    // res.send('respond with a resource');
 });
 
 module.exports = router;

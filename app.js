@@ -60,9 +60,9 @@ async function pickWinners() {
     var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
     var eta_ms = new Date(json.createdAt).getTime() + 31000 - utc.getTime();
 
-    console.log(new Date(json.createdAt))
-    console.log(utc)
-    console.log(eta_ms)
+    // console.log(new Date(json.createdAt))
+    // console.log(utc)
+    // console.log(eta_ms)
 
     var timeout = setTimeout(pickWinners, eta_ms);
 
