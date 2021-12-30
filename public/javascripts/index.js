@@ -34,6 +34,7 @@ const results = async () => {
     // Set countdown
     deadline = new Date(lastResult.timestamp);
     deadline.setSeconds(deadline.getSeconds() + 30);
+    deadline.setMilliseconds(1500)
 
     var results = document.querySelector('#results');
     results.innerHTML = '';
