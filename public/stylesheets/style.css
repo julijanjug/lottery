@@ -28,6 +28,10 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
+.widget {
+  margin: 10px;
+}
+
 .wrapper {
   overflow: hidden;
   justify-content: space-evenly;

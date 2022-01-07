@@ -3,40 +3,10 @@
 	<head>
 		<title><%= title %></title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
-		<script>
-			const submitUrl = "<%= submitUrl %>";
-			const resultsUrl = "<%= resultsUrl %>";
-		</script>
 	</head>
 	<body>
-		<div class="wrapper">
-			<div class="header" id="countdown">New winner in x s..</div>
-			<div class="list">
-				<ul id="results">
-					<% results.forEach(function(result) { %>
-					<li>
-						<div class="winners"><%= result.winners %></div>
-						<div class="number"><%= result.number %></div>
-					</li>
-					<% }); %>
-				</ul>
-			</div>
-			<div class="form">
-				<form id="entry" action="#">
-					<div class="inputs">
-						<fieldset class="float-label-field">
-							<label for="name">Name</label>
-							<input id="name" type="text" required />
-						</fieldset>
-						<fieldset class="float-label-field">
-							<label for="number">Number</label>
-							<input id="number" type="number" min="1" max="30" required />
-						</fieldset>
-					</div>
-					<button class="button-36" onclick="submitEntry()">Submit</button>
-				</form>
-			</div>
-		</div>
+		<div class="widget" id="widget1"></div>
+		<div class="widget" id="widget2"></div>
 		<script src="/javascripts/index.js"></script>
 	</body>
 </html>
